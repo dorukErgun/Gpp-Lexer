@@ -1,10 +1,3 @@
-; ******************************
-; *  341 Programming Languages *                
-; *  Fall 2020                 *     
-; *  Student: Doruk ERGÜN      * 
-; *  Number: 171044057         *             
-; ******************************
-
 ;;GLOBAL VARIABLES
 (setq keywords '("AND" "OR" " NOT" "EQUAL" "LESS" "NIL" "LIST"
 "APPEND" "CONCAT" "SET" "DEFFUN" "FOR" "IF"
