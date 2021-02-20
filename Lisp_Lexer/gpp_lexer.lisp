@@ -119,20 +119,20 @@ name)
                 ;;Keywords
                 ((not (eq nil (contains token keywords)))(progn (setq current_token (concatenate 'string "KW_" (string-upcase token)))(writeToFile "parsed_lisp.txt" current_token)))
                 ;;Some extra information about values.
-                ((or(equal token "0")(and (char>=(char token 0) #\1) (char<=(char token 0) #\9))) 	(progn	
-																						(setq control 0)
-																						(loop for k from 1 to (- (length token) 1 )
-																							do(progn
-																									(if(or (and (char>=(char token k) #\a)(char<=(char token k) #\z))(and (char>= (char token k) #\A) (char<= (char token k) #\Z))(equal (char token k) #\_) )
-																										(progn
-																											(setq control 1)
-																										)
-																									)
-																							)
-																						)
-																						(if(= control 0)
-																							(writeToFile "parsed_lisp.txt" (string "VALUE"))
-																							(writeToFile "parsed_lisp.txt" (string "ERROR")))))
+                ((or(equal token "0")(and (char>=(char token 0) #\1) (char<=(char token 0) #\9))) (progn	
+			(setq control 0)
+			(loop for k from 1 to (- (length token) 1 )
+				do(progn
+						(if(or (and (char>=(char token k) #\a)(char<=(char token k) #\z))(and (char>= (char token k) #\A) (char<= (char token k) #\Z))(equal (char token k) #\_) )
+							(progn
+								(setq control 1)
+							)
+						)
+				)
+			)
+			(if(= control 0)
+				(writeToFile "parsed_lisp.txt" (string "VALUE"))
+				(writeToFile "parsed_lisp.txt" (string "ERROR")))))
                 ;;Identifiers
                 ((and (or (and (char>= (char token 0) #\a) (char<= (char token 0) #\z))(and (char>= (char token 0) #\A) (char<= (char token 0) #\Z))(equal (char token 0) #\_) ) (not (eq token "COMMENT")))(writeToFile "parsed_lisp.txt" (string"IDENTIFIER")))
                 ;;Values
